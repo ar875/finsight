@@ -1,5 +1,9 @@
 # FinSight: question answering over Indian annual reports
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://finsight1rag.streamlit.app/)
+
+**Live demo:** https://finsight1rag.streamlit.app/ (light CPU version; see the results table for both versions)
+
 Ask a question about six Indian companies (TCS, Infosys, Wipro, HDFC Bank, ICICI Bank, Hindustan Unilever) and get
 a short answer where every figure cites the PDF page it came from. When the documents don't hold the answer,
 the system refuses instead of guessing.
