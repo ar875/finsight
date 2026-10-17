@@ -1,0 +1,51 @@
+{
+  "1. Phase 1 baseline (fixed chunks, dense)": {
+    "hit@6": 0.174,
+    "recall@6": 0.174,
+    "mrr": 0.126,
+    "ndcg@6": 0.137,
+    "candidate_recall": 0.37
+  },
+  "2. + structure-aware chunking": {
+    "hit@6": 0.413,
+    "recall@6": 0.413,
+    "mrr": 0.29,
+    "ndcg@6": 0.328,
+    "candidate_recall": 0.609
+  },
+  "3. + hybrid search (BM25 + RRF)": {
+    "hit@6": 0.609,
+    "recall@6": 0.609,
+    "mrr": 0.38,
+    "ndcg@6": 0.435,
+    "candidate_recall": 0.804
+  },
+  "4. + company filter & decomposition": {
+    "hit@6": 0.587,
+    "recall@6": 0.587,
+    "mrr": 0.349,
+    "ndcg@6": 0.414,
+    "candidate_recall": 0.848
+  },
+  "5. + year/doc-type boost": {
+    "hit@6": 0.717,
+    "recall@6": 0.696,
+    "mrr": 0.454,
+    "ndcg@6": 0.536,
+    "candidate_recall": 0.924
+  },
+  "6. + query expansion": {
+    "hit@6": 0.717,
+    "recall@6": 0.696,
+    "mrr": 0.455,
+    "ndcg@6": 0.538,
+    "candidate_recall": 0.924
+  },
+  "7. + reranker (= full Phase 2)": {
+    "hit@6": 0.804,
+    "recall@6": 0.793,
+    "mrr": 0.506,
+    "ndcg@6": 0.617,
+    "candidate_recall": 0.924
+  }
+}

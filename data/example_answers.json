@@ -1,0 +1,1021 @@
+{
+ "made_on": "2026-10-17",
+ "profile": "light",
+ "reranker": "onnx:Alibaba-NLP/gte-reranker-modernbert-base:onnx/model_quantized.onnx",
+ "order": [
+  "What was TCS's revenue from operations in FY2025?",
+  "What was HDFC Bank's gross NPA ratio as of March 31, 2025?",
+  "What revenue growth guidance did Infosys give for FY2026?",
+  "Compare the gross NPA ratio of HDFC Bank and ICICI Bank as of March 31, 2025",
+  "What was Hindustan Unilever's total cash and cash equivalents as at 31 March 2025?",
+  "How did ICICI Bank's total provisions change from Q4 FY2025 to Q4 FY2026?",
+  "What was Wipro's revenue in FY2010?"
+ ],
+ "answers": {
+  "What was TCS's revenue from operations in FY2025?": {
+   "question": "What was TCS's revenue from operations in FY2025?",
+   "answer": "Tata Consultancy Services' revenue from operations in FY 2025 was ₹255,324 crore[1][6]",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 1,
+     "chunk_id": "TCS_FY2025_annual_report::00199",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 89,
+     "page_end": 89,
+     "section": "Financial Performance Overview",
+     "content_type": "table",
+     "label": "Tata Consultancy Services FY2025 Annual Report, p. 89 (Financial Performance Overview)",
+     "score": 0.05912,
+     "dense_rank": 15,
+     "bm25_rank": 10,
+     "rerank_score": 0.9226
+    },
+    {
+     "number": 6,
+     "chunk_id": "TCS_FY2025_annual_report::00146",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 70,
+     "page_end": 71,
+     "section": "Board’s Report",
+     "content_type": "text",
+     "label": "Tata Consultancy Services FY2025 Annual Report, pp. 70-71 (Board’s Report)",
+     "score": 0.04316,
+     "dense_rank": null,
+     "bm25_rank": 12,
+     "rerank_score": 0.9033
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00199",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 89,
+     "page_end": 89,
+     "section": "Financial Performance Overview",
+     "content_type": "table",
+     "label": "Tata Consultancy Services FY2025 Annual Report, p. 89 (Financial Performance Overview)",
+     "score": 0.05912,
+     "dense_rank": 15,
+     "bm25_rank": 10,
+     "rerank_score": 0.9226
+    },
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00689",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 231,
+     "page_end": 231,
+     "section": "Notes forming part of Consolidated Financial Statements",
+     "content_type": "table",
+     "label": "Tata Consultancy Services FY2025 Annual Report, p. 231 (Notes forming part of Consolidated Financial Statements)",
+     "score": 0.03844,
+     "dense_rank": null,
+     "bm25_rank": 20,
+     "rerank_score": 0.9123
+    },
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00200",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 89,
+     "page_end": 89,
+     "section": "Financial Performance Overview",
+     "content_type": "text",
+     "label": "Tata Consultancy Services FY2025 Annual Report, p. 89 (Financial Performance Overview)",
+     "score": 0.04468,
+     "dense_rank": 4,
+     "bm25_rank": null,
+     "rerank_score": 0.9111
+    },
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00026",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 22,
+     "page_end": 23,
+     "section": "Enterprise Risk Management | Pg 88",
+     "content_type": "text",
+     "label": "Tata Consultancy Services FY2025 Annual Report, pp. 22-23 (Enterprise Risk Management | Pg 88)",
+     "score": 0.04129,
+     "dense_rank": 14,
+     "bm25_rank": null,
+     "rerank_score": 0.9077
+    },
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00692",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 231,
+     "page_end": 231,
+     "section": "Notes forming part of Consolidated Financial Statements",
+     "content_type": "text",
+     "label": "Tata Consultancy Services FY2025 Annual Report, p. 231 (Notes forming part of Consolidated Financial Statements)",
+     "score": 0.0401,
+     "dense_rank": null,
+     "bm25_rank": 24,
+     "rerank_score": 0.9046
+    },
+    {
+     "chunk_id": "TCS_FY2025_annual_report::00146",
+     "doc_id": "TCS_FY2025_annual_report",
+     "page_start": 70,
+     "page_end": 71,
+     "section": "Board’s Report",
+     "content_type": "text",
+     "label": "Tata Consultancy Services FY2025 Annual Report, pp. 70-71 (Board’s Report)",
+     "score": 0.04316,
+     "dense_rank": null,
+     "bm25_rank": 12,
+     "rerank_score": 0.9033
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "TCS"
+     ],
+     "years": [
+      "FY2025"
+     ],
+     "quarter": null,
+     "doc_type": null
+    },
+    "hard_filter": {
+     "company": [
+      "TCS"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2025"
+     ]
+    }
+   },
+   "top_rerank_score": 0.9225933959418277,
+   "latency_ms": {
+    "retrieval": 12055,
+    "generation": 1042,
+    "total": 13097
+   },
+   "tokens": {
+    "input": 2201,
+    "output": 67
+   },
+   "candidates_count": 30
+  },
+  "What was HDFC Bank's gross NPA ratio as of March 31, 2025?": {
+   "question": "What was HDFC Bank's gross NPA ratio as of March 31, 2025?",
+   "answer": "HDFC Bank's gross NPA ratio as of March 31, 2025 was 1.33 %[5]",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 5,
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00784",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 380,
+     "page_end": 380,
+     "section": "Provisions)^^",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 380 (Provisions)^^)",
+     "score": 0.06255,
+     "dense_rank": 5,
+     "bm25_rank": 5,
+     "rerank_score": 0.8885
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00415",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 228,
+     "page_end": 228,
+     "section": "Comments",
+     "content_type": "text",
+     "label": "HDFC Bank FY2025 Annual Report, p. 228 (Comments)",
+     "score": 0.05531,
+     "dense_rank": 16,
+     "bm25_rank": 16,
+     "rerank_score": 0.9084
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00822",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 391,
+     "page_end": 391,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 391 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.05751,
+     "dense_rank": 4,
+     "bm25_rank": 25,
+     "rerank_score": 0.9084
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00475",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 256,
+     "page_end": 256,
+     "section": "Steering Committee",
+     "content_type": "text",
+     "label": "HDFC Bank FY2025 Annual Report, p. 256 (Steering Committee)",
+     "score": 0.02971,
+     "dense_rank": null,
+     "bm25_rank": 11,
+     "rerank_score": 0.8944
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00787",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 381,
+     "page_end": 381,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 381 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.02867,
+     "dense_rank": null,
+     "bm25_rank": 14,
+     "rerank_score": 0.8919
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00784",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 380,
+     "page_end": 380,
+     "section": "Provisions)^^",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 380 (Provisions)^^)",
+     "score": 0.06255,
+     "dense_rank": 5,
+     "bm25_rank": 5,
+     "rerank_score": 0.8885
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00788",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 381,
+     "page_end": 381,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 381 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.03128,
+     "dense_rank": null,
+     "bm25_rank": 6,
+     "rerank_score": 0.8773
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "HDFCBANK"
+     ],
+     "years": [
+      "FY2025"
+     ],
+     "quarter": null,
+     "doc_type": null
+    },
+    "hard_filter": {
+     "company": [
+      "HDFCBANK"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2025"
+     ]
+    }
+   },
+   "top_rerank_score": 0.9084318401902521,
+   "latency_ms": {
+    "retrieval": 11962,
+    "generation": 950,
+    "total": 12911
+   },
+   "tokens": {
+    "input": 3127,
+    "output": 60
+   },
+   "candidates_count": 30
+  },
+  "What revenue growth guidance did Infosys give for FY2026?": {
+   "question": "What revenue growth guidance did Infosys give for FY2026?",
+   "answer": "Infosys gave a revenue growth guidance for FY2026 of 0% to 3% in constant currency terms. [6]",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 6,
+     "chunk_id": "INFY_FY2025Q4_earnings_call::00002",
+     "doc_id": "INFY_FY2025Q4_earnings_call",
+     "page_start": 4,
+     "page_end": 5,
+     "section": "Q4 FY25 Media Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2025 Q4 Earnings Call, pp. 4-5 (Q4 FY25 Media Conference Call)",
+     "score": 0.03101,
+     "dense_rank": null,
+     "bm25_rank": null,
+     "rerank_score": 0.8943
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "INFY_FY2026Q4_earnings_call::00003",
+     "doc_id": "INFY_FY2026Q4_earnings_call",
+     "page_start": 5,
+     "page_end": 5,
+     "section": "Q4 FY26 Media Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2026 Q4 Earnings Call, p. 5 (Q4 FY26 Media Conference Call)",
+     "score": 0.02789,
+     "dense_rank": 25,
+     "bm25_rank": 2,
+     "rerank_score": 0.9459
+    },
+    {
+     "chunk_id": "INFY_FY2026Q4_earnings_call::00037",
+     "doc_id": "INFY_FY2026Q4_earnings_call",
+     "page_start": 30,
+     "page_end": 31,
+     "section": "Q4 FY26 Earnings Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2026 Q4 Earnings Call, pp. 30-31 (Q4 FY26 Earnings Conference Call)",
+     "score": 0.03054,
+     "dense_rank": 5,
+     "bm25_rank": 6,
+     "rerank_score": 0.9139
+    },
+    {
+     "chunk_id": "INFY_FY2024Q4_earnings_call::00003",
+     "doc_id": "INFY_FY2024Q4_earnings_call",
+     "page_start": 4,
+     "page_end": 4,
+     "section": "Press Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2024 Q4 Earnings Call, p. 4 (Press Conference Call)",
+     "score": 0.02807,
+     "dense_rank": 22,
+     "bm25_rank": 3,
+     "rerank_score": 0.9085
+    },
+    {
+     "chunk_id": "INFY_FY2024Q4_earnings_call::00002",
+     "doc_id": "INFY_FY2024Q4_earnings_call",
+     "page_start": 4,
+     "page_end": 4,
+     "section": "Press Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2024 Q4 Earnings Call, p. 4 (Press Conference Call)",
+     "score": 0.0283,
+     "dense_rank": 24,
+     "bm25_rank": 1,
+     "rerank_score": 0.9082
+    },
+    {
+     "chunk_id": "INFY_FY2025Q4_earnings_call::00053",
+     "doc_id": "INFY_FY2025Q4_earnings_call",
+     "page_start": 45,
+     "page_end": 45,
+     "section": "Q4 FY'25 Earnings Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2025 Q4 Earnings Call, p. 45 (Q4 FY'25 Earnings Conference Call)",
+     "score": 0.02819,
+     "dense_rank": null,
+     "bm25_rank": null,
+     "rerank_score": 0.9059
+    },
+    {
+     "chunk_id": "INFY_FY2025Q4_earnings_call::00002",
+     "doc_id": "INFY_FY2025Q4_earnings_call",
+     "page_start": 4,
+     "page_end": 5,
+     "section": "Q4 FY25 Media Conference Call",
+     "content_type": "text",
+     "label": "Infosys FY2025 Q4 Earnings Call, pp. 4-5 (Q4 FY25 Media Conference Call)",
+     "score": 0.03101,
+     "dense_rank": null,
+     "bm25_rank": null,
+     "rerank_score": 0.8943
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "INFY"
+     ],
+     "years": [
+      "FY2025"
+     ],
+     "quarter": null,
+     "doc_type": "earnings_call"
+    },
+    "hard_filter": {
+     "company": [
+      "INFY"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2025"
+     ],
+     "doc_type": "earnings_call"
+    }
+   },
+   "top_rerank_score": 0.9459495957311979,
+   "latency_ms": {
+    "retrieval": 11817,
+    "generation": 1037,
+    "total": 12855
+   },
+   "tokens": {
+    "input": 2664,
+    "output": 63
+   },
+   "candidates_count": 30
+  },
+  "Compare the gross NPA ratio of HDFC Bank and ICICI Bank as of March 31, 2025": {
+   "question": "Compare the gross NPA ratio of HDFC Bank and ICICI Bank as of March 31, 2025",
+   "answer": "HDFC Bank's gross NPA ratio as of March 31, 2025 was 1.33 %[7], whereas ICICI Bank's gross NPA ratio as of March 31, 2025 was 1.73 %[2].",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 7,
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00788",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 381,
+     "page_end": 381,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 381 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.03128,
+     "dense_rank": null,
+     "bm25_rank": 6,
+     "rerank_score": 0.8923
+    },
+    {
+     "number": 2,
+     "chunk_id": "ICICIBANK_FY2025_annual_report::00701",
+     "doc_id": "ICICIBANK_FY2025_annual_report",
+     "page_start": 265,
+     "page_end": 265,
+     "section": "SCHEDULES",
+     "content_type": "table",
+     "label": "ICICI Bank FY2025 Annual Report, p. 265 (SCHEDULES)",
+     "score": 0.06504,
+     "dense_rank": 1,
+     "bm25_rank": 2,
+     "rerank_score": 0.9529
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00822",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 391,
+     "page_end": 391,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 391 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.05589,
+     "dense_rank": 8,
+     "bm25_rank": 25,
+     "rerank_score": 0.9116
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2025_annual_report::00701",
+     "doc_id": "ICICIBANK_FY2025_annual_report",
+     "page_start": 265,
+     "page_end": 265,
+     "section": "SCHEDULES",
+     "content_type": "table",
+     "label": "ICICI Bank FY2025 Annual Report, p. 265 (SCHEDULES)",
+     "score": 0.06504,
+     "dense_rank": 1,
+     "bm25_rank": 2,
+     "rerank_score": 0.9529
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00475",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 256,
+     "page_end": 256,
+     "section": "Steering Committee",
+     "content_type": "text",
+     "label": "HDFC Bank FY2025 Annual Report, p. 256 (Steering Committee)",
+     "score": 0.02971,
+     "dense_rank": null,
+     "bm25_rank": 11,
+     "rerank_score": 0.9057
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2026_annual_report::00851",
+     "doc_id": "ICICIBANK_FY2026_annual_report",
+     "page_start": 301,
+     "page_end": 301,
+     "section": "SCHEDULES",
+     "content_type": "table",
+     "label": "ICICI Bank FY2026 Annual Report, p. 301 (SCHEDULES)",
+     "score": 0.032,
+     "dense_rank": 2,
+     "bm25_rank": 3,
+     "rerank_score": 0.9215
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00786",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 381,
+     "page_end": 381,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "text",
+     "label": "HDFC Bank FY2025 Annual Report, p. 381 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.03037,
+     "dense_rank": null,
+     "bm25_rank": 9,
+     "rerank_score": 0.9011
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2025_annual_report::00740",
+     "doc_id": "ICICIBANK_FY2025_annual_report",
+     "page_start": 273,
+     "page_end": 273,
+     "section": "SCHEDULES",
+     "content_type": "table",
+     "label": "ICICI Bank FY2025 Annual Report, p. 273 (SCHEDULES)",
+     "score": 0.04035,
+     "dense_rank": null,
+     "bm25_rank": 18,
+     "rerank_score": 0.9149
+    },
+    {
+     "chunk_id": "HDFCBANK_FY2025_annual_report::00788",
+     "doc_id": "HDFCBANK_FY2025_annual_report",
+     "page_start": 381,
+     "page_end": 381,
+     "section": "SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS",
+     "content_type": "table",
+     "label": "HDFC Bank FY2025 Annual Report, p. 381 (SCHEDULES TO THE STANDALONE FINANCIAL STATEMENTS)",
+     "score": 0.03128,
+     "dense_rank": null,
+     "bm25_rank": 6,
+     "rerank_score": 0.8923
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2025_annual_report::00478",
+     "doc_id": "ICICIBANK_FY2025_annual_report",
+     "page_start": 199,
+     "page_end": 199,
+     "section": "MANAGEMENT DISCUSSION & ANALYSIS",
+     "content_type": "table",
+     "label": "ICICI Bank FY2025 Annual Report, p. 199 (MANAGEMENT DISCUSSION & ANALYSIS)",
+     "score": 0.05917,
+     "dense_rank": 5,
+     "bm25_rank": 17,
+     "rerank_score": 0.9012
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "HDFCBANK",
+      "ICICIBANK"
+     ],
+     "years": [
+      "FY2025"
+     ],
+     "quarter": null,
+     "doc_type": null
+    },
+    "hard_filter": {
+     "company": [
+      "HDFCBANK",
+      "ICICIBANK"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2025"
+     ]
+    }
+   },
+   "top_rerank_score": 0.9116102105856185,
+   "latency_ms": {
+    "retrieval": 23056,
+    "generation": 941,
+    "total": 23997
+   },
+   "tokens": {
+    "input": 2489,
+    "output": 102
+   },
+   "candidates_count": 60
+  },
+  "What was Hindustan Unilever's total cash and cash equivalents as at 31 March 2025?": {
+   "question": "What was Hindustan Unilever's total cash and cash equivalents as at 31 March 2025?",
+   "answer": "Hindustan Unilever's total cash and cash equivalents as at 31 March 2025 were ₹5,947 crore[1].",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 1,
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::00726",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 158,
+     "page_end": 158,
+     "section": "NOTE 13 CASH AND CASH EQUIVALENTS",
+     "content_type": "table",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 158 (NOTE 13 CASH AND CASH EQUIVALENTS)",
+     "score": 0.03227,
+     "dense_rank": 3,
+     "bm25_rank": 1,
+     "rerank_score": 0.9536
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::00726",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 158,
+     "page_end": 158,
+     "section": "NOTE 13 CASH AND CASH EQUIVALENTS",
+     "content_type": "table",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 158 (NOTE 13 CASH AND CASH EQUIVALENTS)",
+     "score": 0.03227,
+     "dense_rank": 3,
+     "bm25_rank": 1,
+     "rerank_score": 0.9536
+    },
+    {
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::00729",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 158,
+     "page_end": 158,
+     "section": "NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS",
+     "content_type": "table",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 158 (NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS)",
+     "score": 0.02857,
+     "dense_rank": 10,
+     "bm25_rank": 10,
+     "rerank_score": 0.92
+    },
+    {
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::01121",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 212,
+     "page_end": 212,
+     "section": "Income, Expenses, Gains or Losses on Financial Instruments",
+     "content_type": "text",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 212 (Income, Expenses, Gains or Losses on Financial Instruments)",
+     "score": 0.02475,
+     "dense_rank": 14,
+     "bm25_rank": 29,
+     "rerank_score": 0.8999
+    },
+    {
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::01005",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 200,
+     "page_end": 200,
+     "section": "NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS",
+     "content_type": "table",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 200 (NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS)",
+     "score": 0.02643,
+     "dense_rank": 21,
+     "bm25_rank": 11,
+     "rerank_score": 0.8974
+    },
+    {
+     "chunk_id": "HINDUNILVR_FY2025_annual_report::01004",
+     "doc_id": "HINDUNILVR_FY2025_annual_report",
+     "page_start": 200,
+     "page_end": 200,
+     "section": "NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS",
+     "content_type": "text",
+     "label": "Hindustan Unilever FY2025 Annual Report, p. 200 (NOTE 14 BANK BALANCES OTHER THAN CASH AND CASH EQUIVALENTS)",
+     "score": 0.01562,
+     "dense_rank": null,
+     "bm25_rank": 4,
+     "rerank_score": 0.8957
+    },
+    {
+     "chunk_id": "HINDUNILVR_FY2024_annual_report::00931",
+     "doc_id": "HINDUNILVR_FY2024_annual_report",
+     "page_start": 192,
+     "page_end": 192,
+     "section": "NOTE 13 CASH AND CASH EQUIVALENTS",
+     "content_type": "table",
+     "label": "Hindustan Unilever FY2024 Annual Report, p. 192 (NOTE 13 CASH AND CASH EQUIVALENTS)",
+     "score": 0.02863,
+     "dense_rank": 2,
+     "bm25_rank": 20,
+     "rerank_score": 0.8894
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "HINDUNILVR"
+     ],
+     "years": [],
+     "quarter": null,
+     "doc_type": null
+    },
+    "hard_filter": {
+     "company": [
+      "HINDUNILVR"
+     ]
+    },
+    "soft_filter": {}
+   },
+   "top_rerank_score": 0.9536418773346517,
+   "latency_ms": {
+    "retrieval": 6284,
+    "generation": 437,
+    "total": 6721
+   },
+   "tokens": {
+    "input": 1522,
+    "output": 138
+   },
+   "candidates_count": 30
+  },
+  "How did ICICI Bank's total provisions change from Q4 FY2025 to Q4 FY2026?": {
+   "question": "How did ICICI Bank's total provisions change from Q4 FY2025 to Q4 FY2026?",
+   "answer": "ICICI Bank’s total provisions in Q4 FY2025 were ₹8.91 billion Rupees, whereas in Q4 FY2026 they were ₹0.96 billion Rupees, a decrease of ₹7.95 billion Rupees [1][3].",
+   "refused": false,
+   "gated": false,
+   "error": null,
+   "citations": [
+    {
+     "number": 1,
+     "chunk_id": "ICICIBANK_FY2025Q4_earnings_call::00032",
+     "doc_id": "ICICIBANK_FY2025Q4_earnings_call",
+     "page_start": 34,
+     "page_end": 34,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2025 Q4 Earnings Call, p. 34 (RANJAN)",
+     "score": 0.06557,
+     "dense_rank": 1,
+     "bm25_rank": 1,
+     "rerank_score": 0.9235
+    },
+    {
+     "number": 3,
+     "chunk_id": "ICICIBANK_FY2026Q4_earnings_call::00034",
+     "doc_id": "ICICIBANK_FY2026Q4_earnings_call",
+     "page_start": 26,
+     "page_end": 27,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2026 Q4 Earnings Call, pp. 26-27 (RANJAN)",
+     "score": 0.0635,
+     "dense_rank": 3,
+     "bm25_rank": 4,
+     "rerank_score": 0.9104
+    }
+   ],
+   "sources": [
+    {
+     "chunk_id": "ICICIBANK_FY2025Q4_earnings_call::00032",
+     "doc_id": "ICICIBANK_FY2025Q4_earnings_call",
+     "page_start": 34,
+     "page_end": 34,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2025 Q4 Earnings Call, p. 34 (RANJAN)",
+     "score": 0.06557,
+     "dense_rank": 1,
+     "bm25_rank": 1,
+     "rerank_score": 0.9235
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2026Q4_earnings_call::00009",
+     "doc_id": "ICICIBANK_FY2026Q4_earnings_call",
+     "page_start": 5,
+     "page_end": 6,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2026 Q4 Earnings Call, pp. 5-6 (RANJAN)",
+     "score": 0.04057,
+     "dense_rank": null,
+     "bm25_rank": 17,
+     "rerank_score": 0.9111
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2026Q4_earnings_call::00034",
+     "doc_id": "ICICIBANK_FY2026Q4_earnings_call",
+     "page_start": 26,
+     "page_end": 27,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2026 Q4 Earnings Call, pp. 26-27 (RANJAN)",
+     "score": 0.0635,
+     "dense_rank": 3,
+     "bm25_rank": 4,
+     "rerank_score": 0.9104
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2026Q4_earnings_call::00004",
+     "doc_id": "ICICIBANK_FY2026Q4_earnings_call",
+     "page_start": 3,
+     "page_end": 3,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2026 Q4 Earnings Call, p. 3 (RANJAN)",
+     "score": 0.06159,
+     "dense_rank": 4,
+     "bm25_rank": 8,
+     "rerank_score": 0.9059
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2025Q4_earnings_call::00031",
+     "doc_id": "ICICIBANK_FY2025Q4_earnings_call",
+     "page_start": 33,
+     "page_end": 33,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2025 Q4 Earnings Call, p. 33 (RANJAN)",
+     "score": 0.06147,
+     "dense_rank": 11,
+     "bm25_rank": 3,
+     "rerank_score": 0.8967
+    },
+    {
+     "chunk_id": "ICICIBANK_FY2026Q4_earnings_call::00005",
+     "doc_id": "ICICIBANK_FY2026Q4_earnings_call",
+     "page_start": 3,
+     "page_end": 4,
+     "section": "RANJAN",
+     "content_type": "text",
+     "label": "ICICI Bank FY2026 Q4 Earnings Call, pp. 3-4 (RANJAN)",
+     "score": 0.04297,
+     "dense_rank": null,
+     "bm25_rank": 6,
+     "rerank_score": 0.8857
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "ICICIBANK"
+     ],
+     "years": [
+      "FY2025",
+      "FY2026"
+     ],
+     "quarter": "4",
+     "doc_type": "earnings_call"
+    },
+    "hard_filter": {
+     "company": [
+      "ICICIBANK"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2025",
+      "FY2026"
+     ],
+     "doc_type": "earnings_call"
+    }
+   },
+   "top_rerank_score": 0.923544166151611,
+   "latency_ms": {
+    "retrieval": 11930,
+    "generation": 446,
+    "total": 12376
+   },
+   "tokens": {
+    "input": 3688,
+    "output": 124
+   },
+   "candidates_count": 30
+  },
+  "What was Wipro's revenue in FY2010?": {
+   "question": "What was Wipro's revenue in FY2010?",
+   "answer": "NOT_FOUND: No source contains Wipro's FY2010 revenue.",
+   "refused": true,
+   "gated": false,
+   "error": null,
+   "citations": [],
+   "sources": [
+    {
+     "chunk_id": "WIPRO_FY2025_annual_report::00838",
+     "doc_id": "WIPRO_FY2025_annual_report",
+     "page_start": 360,
+     "page_end": 361,
+     "section": "35. SEGMENT INFORMATION",
+     "content_type": "text",
+     "label": "Wipro FY2025 Annual Report, pp. 360-361 (35. SEGMENT INFORMATION)",
+     "score": 0.01538,
+     "dense_rank": null,
+     "bm25_rank": 5,
+     "rerank_score": 0.8531
+    },
+    {
+     "chunk_id": "WIPRO_FY2026_annual_report::00744",
+     "doc_id": "WIPRO_FY2026_annual_report",
+     "page_start": 359,
+     "page_end": 359,
+     "section": "Revenue",
+     "content_type": "text",
+     "label": "Wipro FY2026 Annual Report, p. 359 (Revenue)",
+     "score": 0.01613,
+     "dense_rank": 2,
+     "bm25_rank": null,
+     "rerank_score": 0.8283
+    },
+    {
+     "chunk_id": "WIPRO_FY2024_annual_report::01188",
+     "doc_id": "WIPRO_FY2024_annual_report",
+     "page_start": 449,
+     "page_end": 450,
+     "section": "34.\tSEGMENT INFORMATION",
+     "content_type": "text",
+     "label": "Wipro FY2024 Annual Report, pp. 449-450 (34.\tSEGMENT INFORMATION)",
+     "score": 0.01515,
+     "dense_rank": null,
+     "bm25_rank": 6,
+     "rerank_score": 0.8229
+    },
+    {
+     "chunk_id": "WIPRO_FY2025_annual_report::01148",
+     "doc_id": "WIPRO_FY2025_annual_report",
+     "page_start": 476,
+     "page_end": 477,
+     "section": "33.\t SEGMENT INFORMATION",
+     "content_type": "text",
+     "label": "Wipro FY2025 Annual Report, pp. 476-477 (33.\t SEGMENT INFORMATION)",
+     "score": 0.01493,
+     "dense_rank": null,
+     "bm25_rank": 7,
+     "rerank_score": 0.8227
+    },
+    {
+     "chunk_id": "WIPRO_FY2024_annual_report::00619",
+     "doc_id": "WIPRO_FY2024_annual_report",
+     "page_start": 255,
+     "page_end": 255,
+     "section": "33.\t ANALYTICAL RATIOS",
+     "content_type": "text",
+     "label": "Wipro FY2024 Annual Report, p. 255 (33.\t ANALYTICAL RATIOS)",
+     "score": 0.01562,
+     "dense_rank": null,
+     "bm25_rank": 4,
+     "rerank_score": 0.8173
+    },
+    {
+     "chunk_id": "WIPRO_FY2024_annual_report::00124",
+     "doc_id": "WIPRO_FY2024_annual_report",
+     "page_start": 63,
+     "page_end": 63,
+     "section": "Performance Against Guidance",
+     "content_type": "table",
+     "label": "Wipro FY2024 Annual Report, p. 63 (Performance Against Guidance)",
+     "score": 0.01587,
+     "dense_rank": 3,
+     "bm25_rank": null,
+     "rerank_score": 0.8145
+    }
+   ],
+   "filters": {
+    "analysis": {
+     "companies": [
+      "WIPRO"
+     ],
+     "years": [
+      "FY2010"
+     ],
+     "quarter": null,
+     "doc_type": null
+    },
+    "hard_filter": {
+     "company": [
+      "WIPRO"
+     ]
+    },
+    "soft_filter": {
+     "year": [
+      "FY2010"
+     ]
+    }
+   },
+   "top_rerank_score": 0.8531403398330912,
+   "latency_ms": {
+    "retrieval": 11704,
+    "generation": 348,
+    "total": 12052
+   },
+   "tokens": {
+    "input": 2503,
+    "output": 45
+   },
+   "candidates_count": 30
+  }
+ }
+}

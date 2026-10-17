@@ -1,0 +1,8 @@
+# The website (Streamlit, "light" profile): no PyTorch, models run with onnxruntime
+numpy>=1.26
+pyyaml>=6.0
+onnxruntime>=1.17
+tokenizers>=0.15
+huggingface_hub>=0.20
+openai>=1.40
+streamlit>=1.40

@@ -1,0 +1,78 @@
+# FinSight settings. These are the Phase 4 settings that were evaluated
+# (answer accuracy 88.9%, retrieval hit@6 80%). Relative paths are resolved from the project folder.
+
+data:
+  raw_dir: data/raw                  # PDFs named like TCS_FY2025_annual_report.pdf, TCS_FY2025Q4_earnings_call.pdf
+  parsed_dir: data/parsed            # parse cache (parse each PDF once, reuse)
+  index_root: data/index             # one sub-folder per chunking + embedding setup
+  companies: data/companies.csv
+  document_links: data/document_links.csv
+
+parsing:
+  detect_tables: true
+  workers: 4
+
+parser_version: "2.2"                # change when the parser changes (old parse cache files are not reused)
+chunker_version: "2.4"               # change when chunking changes (rebuilds the index, keeps the parse cache)
+
+chunking:
+  strategy: structure                # fixed (Phase 1) | recursive | structure
+  chunk_size: 512                    # approx tokens
+  chunk_overlap: 64
+  min_section_tokens: 200            # merge tiny sections into the next one
+  dedup: true                        # drop boilerplate repeated across documents
+  unit_headers: true                 # add the page's unit ("amounts in ₹ thousand") to each chunk header
+  flatten_headers: true              # merge 2-row table headers ("FY 2026" + "Female %" -> "FY 2026 Female %")
+
+embedding:
+  model: BAAI/bge-small-en-v1.5
+  batch_size: 64
+  onnx_model: null                   # "repo:file.onnx" = run the same model with onnxruntime instead of PyTorch
+
+index:
+  backend: numpy                     # exact search; 21K vectors take ~5 ms
+
+retrieval:
+  mode: hybrid                       # dense | bm25 | hybrid
+  top_k: 30                          # candidates from each search
+  rrf_k: 60
+  use_reranker: true
+  rerank_top_n: null                 # re-rank only the best n fused candidates (null = all top_k)
+  rerank_max_length: null            # tokens per (question, passage) pair (null = model limit, 512)
+  reranker_model: BAAI/bge-reranker-base
+  final_k: 6                         # chunks sent to the LLM
+  company_filter: true
+  soft_filters: true                 # boost the year / doc type the question asks about
+  decompose_multi_company: true
+  per_company_k: 4
+  expand_query: true
+
+generation:
+  base_url: https://api.groq.com/openai/v1
+  model: openai/gpt-oss-20b
+  temperature: 0.0
+  max_tokens: 2000
+  reasoning_effort: low
+  max_retries: 5                     # waits 5, 10, 20 ... s on rate limits (evaluation runs)
+  timeout: 120
+  min_rerank_score: 0.3              # relevance gate: refuse without calling the LLM below this
+
+# Named sets of changes, used with load_config(profile=...) or FINSIGHT_PROFILE=...
+profiles:
+  light:                             # the public website: free CPU, 2.7 GB memory, no PyTorch
+    embedding:
+      onnx_model: "Xenova/bge-small-en-v1.5:onnx/model.onnx"         # same bge-small model, run with onnxruntime
+    retrieval:
+      # English ModernBERT reranker, int8 ONNX (151 MB). Measured on the test set (evaluation/reranker_compare.py):
+      #   gte int8, top 15: hit@6 0.844, MRR 0.637, 1.1 GB, ~13 s/question on a 4-core CPU   <- used
+      #     answers (evaluation/answer_eval.py --profile light): accuracy 0.789, tables 0.692, refusals 100%
+      #   bge-reranker-base, top 15 (ONNX, CPU): hit@6 0.778, answer accuracy 0.800, but 2.8 GB
+      #   bge-reranker-base (full profile), top 30 on GPU: hit@6 0.800, MRR 0.483
+      #   bge-reranker-base on CPU: 2.5-3.1 GB (too big); gte full precision, top 30: hit@6 0.867 but ~25 s/question
+      reranker_model: "onnx:Alibaba-NLP/gte-reranker-modernbert-base:onnx/model_quantized.onnx"
+      rerank_top_n: 15
+    generation:
+      # gte gives high scores to everything: answerable questions with evidence scored >= 0.891,
+      # unanswerable ones 0.79-0.94. At 0.85: 0 answerable gated, 6/10 unanswerable gated (0.88 catches 9/10
+      # but leaves too little margin for new questions)
+      min_rerank_score: 0.85

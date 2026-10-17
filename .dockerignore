@@ -1,0 +1,7 @@
+data/raw
+data/parsed
+notebooks
+tests
+.pytest_cache
+**/__pycache__
+.git

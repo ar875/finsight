@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FinSight</title>
+<meta name="description" content="Ask questions about the annual reports and earnings calls of six Indian companies. Every answer cites the page it came from.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f2f5f3;
+  --sheet: #fbfcfb;
+  --ink: #142b26;
+  --muted: #586b66;
+  --rule: #c9d4d0;
+  --accent: #1f6f5c;
+  --mark: #e4ef7e;
+  --refuse: #a8442f;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1a18; --sheet: #15221f; --ink: #e3ece9; --muted: #93a7a1; --rule: #2b3d39;
+    --accent: #63c7aa; --mark: #4f5a17; --refuse: #e58a73; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1a18; --sheet: #15221f; --ink: #e3ece9; --muted: #93a7a1; --rule: #2b3d39;
+  --accent: #63c7aa; --mark: #4f5a17; --refuse: #e58a73; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 16px/1.55 var(--sans);
+}
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- top */
+header.top { padding: 40px 0 8px; }
+.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand b { font: 600 18px/1 var(--sans); letter-spacing: -0.01em; }
+.brand span { color: var(--muted); font-size: 14px; }
+h1 {
+  font: 500 clamp(34px, 5.2vw, 56px)/1.05 var(--serif);
+  letter-spacing: -0.02em; margin: 36px 0 12px; max-width: 16ch;
+}
+.lede { color: var(--muted); max-width: 62ch; margin: 0 0 28px; font-size: 17px; }
+
+/* ---- question form: the hero */
+form.ask { border: 1.5px solid var(--ink); background: var(--sheet); border-radius: 6px; }
+form.ask textarea {
+  display: block; width: 100%; border: 0; background: transparent; color: var(--ink); resize: vertical;
+  font: 400 21px/1.4 var(--serif); padding: 18px 20px 6px; min-height: 92px;
+}
+form.ask textarea:focus { outline: none; }
+form.ask:focus-within { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+.formbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px 10px 20px; flex-wrap: wrap; }
+.companies { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.companies small { color: var(--muted); margin-right: 4px; font-size: 13px; }
+.chip {
+  font: 500 13px/1 var(--sans); color: var(--ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 7px 11px;
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+button.go {
+  font: 600 15px/1 var(--sans); background: var(--accent); border: 0; border-radius: 4px;
+  padding: 12px 22px; cursor: pointer;
+}
+button.go { color: var(--sheet); }
+button.go:disabled { opacity: .55; cursor: progress; }
+.examples { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14px; }
+.examples button {
+  font: inherit; color: var(--muted); background: none; border: 0; padding: 4px 0; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; text-align: left;
+}
+.examples button:hover { color: var(--ink); text-decoration-color: var(--ink); }
+
+/* ---- result */
+main { padding: 36px 0 24px; }
+.result { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 48px; align-items: start; }
+.result[hidden] { display: none; }
+.answer-col { position: sticky; top: 20px; }
+.asked { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+.answer { font: 400 22px/1.5 var(--serif); margin: 0; }
+.answer p { margin: 0 0 14px; }
+.answer ul { margin: 0 0 14px; padding-left: 22px; }
+.answer.refused { color: var(--refuse); }
+.answer .muted { color: var(--muted); font-size: 18px; }
+button.cite {
+  font: 600 12px/1 var(--sans); vertical-align: 3px; margin: 0 1px; cursor: pointer;
+  color: var(--accent); background: transparent; border: 1px solid currentColor; border-radius: 3px; padding: 3px 5px;
+}
+button.cite:hover { background: var(--accent); color: var(--sheet); }
+.notice { border-left: 3px solid var(--refuse); padding: 8px 12px; margin: 0 0 16px; font-size: 15px; background: var(--sheet); }
+.facts { margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 13px; color: var(--muted); }
+.facts strong { color: var(--ink); font-weight: 600; }
+
+.sources-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 10px; gap: 12px; }
+.sources-head h2 { font: 600 15px/1.3 var(--sans); margin: 0; }
+.sources-head span { color: var(--muted); font-size: 13px; }
+ol.sources { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+ol.sources > li { border-bottom: 1px solid var(--rule); }
+.src-row {
+  display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 12px; align-items: start;
+  width: 100%; text-align: left; background: none; border: 0; color: inherit; cursor: pointer; padding: 14px 4px; font: inherit;
+}
+.num {
+  font: 600 13px/22px var(--sans); text-align: center; border-radius: 3px; border: 1px solid var(--rule); color: var(--muted);
+}
+li.cited .num { border-color: var(--accent); color: var(--accent); }
+.src-title { font-weight: 500; font-size: 15px; line-height: 1.35; }
+.src-sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.score { width: 64px; padding-top: 6px; }
+.score i { display: block; height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.score i b { display: block; height: 100%; background: var(--accent); }
+.score small { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; text-align: right; }
+.passage { padding: 0 4px 18px 46px; }
+.passage[hidden] { display: none; }
+.passage .ctx { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; }
+.passage .body { font: 400 15px/1.6 var(--serif); white-space: pre-wrap; overflow-wrap: anywhere; }
+.passage table { border-collapse: collapse; font: 400 13px/1.35 var(--sans); font-variant-numeric: tabular-nums; margin: 4px 0; }
+.passage .tablewrap { overflow-x: auto; max-width: 100%; border: 1px solid var(--rule); background: var(--sheet); }
+.passage th, .passage td { border-bottom: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; min-width: 60px; }
+.passage td.n { text-align: right; }
+.passage th { font-weight: 600; background: color-mix(in srgb, var(--rule) 35%, transparent); }
+.passage .links { margin-top: 10px; font-size: 13px; }
+li.flash .src-row { animation: flash 1.6s ease-out; }
+@keyframes flash { from { background: var(--mark); } to { background: transparent; } }
+mark { background: var(--mark); color: inherit; padding: 0 1px; }
+
+.loading { color: var(--muted); font: 400 20px/1.5 var(--serif); }
+.loading::after { content: ""; display: inline-block; width: 1.2em; text-align: left; animation: dots 1.2s steps(4) infinite; }
+@keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+/* ---- about */
+section.about { border-top: 1px solid var(--rule); margin-top: 56px; padding: 36px 0 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 48px; }
+section.about h2 { font: 500 26px/1.2 var(--serif); margin: 0 0 12px; }
+section.about p { color: var(--muted); max-width: 60ch; margin: 0 0 12px; }
+table.metrics { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+table.metrics td { padding: 9px 0; border-bottom: 1px solid var(--rule); }
+table.metrics td:last-child { text-align: right; font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding: 0 0 40px; }
+.theme { font: inherit; color: var(--muted); background: none; border: 0; cursor: pointer; text-decoration: underline; padding: 0; }
+
+@media (max-width: 860px) {
+  .wrap { padding: 0 16px; }
+  header.top { padding-top: 24px; }
+  h1 { margin-top: 24px; }
+  .result, section.about { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .answer-col { position: static; }
+  .answer { font-size: 20px; }
+  .passage { padding-left: 4px; }
+  .formbar { padding-left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  li.flash .src-row, .loading::after { animation: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><b>FinSight</b><span id="status">Loading the document index</span></div>
+    <h1>Ask the annual reports.</h1>
+    <p class="lede">Six Indian companies, three years of annual reports and Q4 earnings calls. Every answer cites the page it came from, and the system says so when the documents don't contain the answer.</p>
+
+    <form class="ask" id="ask">
+      <label for="q" class="sr" style="position:absolute;left:-9999px">Your question</label>
+      <textarea id="q" name="q" rows="2" maxlength="400" placeholder="What was HDFC Bank's gross NPA ratio as of March 31, 2025?" required></textarea>
+      <div class="formbar">
+        <div class="companies" id="companies" role="group" aria-label="Limit to companies"><small>Limit to</small></div>
+        <button class="go" id="go" type="submit">Ask</button>
+      </div>
+    </form>
+    <div class="examples" id="examples"></div>
+  </header>
+
+  <main>
+    <div class="result" id="result" hidden aria-live="polite">
+      <div class="answer-col">
+        <p class="asked" id="asked"></p>
+        <div id="notice"></div>
+        <div class="answer" id="answer"></div>
+        <div class="facts" id="facts"></div>
+      </div>
+      <div>
+        <div class="sources-head"><h2>Sources sent to the model</h2><span id="srcnote"></span></div>
+        <ol class="sources" id="sources"></ol>
+      </div>
+    </div>
+  </main>
+
+  <section class="about" aria-labelledby="how">
+    <div>
+      <h2 id="how">How it was tested</h2>
+      <p>The answers were checked against a hand-reviewed test set of real questions, each traced back to a page in the PDFs. Numbers are scored exactly, with units converted (₹ thousand, lakh, crore, million, billion), so a missing "thousand" counts as wrong.</p>
+      <p>Search combines keyword matching and meaning-based matching, narrows to the companies and years in the question, and re-ranks the best 30 passages before six are sent to the model. When no passage matches well, the model is not asked at all.</p>
+    </div>
+    <table class="metrics" id="metrics"></table>
+  </section>
+
+  <footer>
+    Answers come only from the listed documents and can still be wrong; check the cited page before relying on a figure.
+    <button class="theme" id="theme" type="button">Switch to dark theme</button>
+  </footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const state = { companies: new Set(), meta: null, busy: false };
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pct = (x) => `${Math.round(x * 1000) / 10}%`;
+
+// ---- theme
+(function theme() {
+  const btn = $("theme");
+  const saved = (() => { try { return localStorage.getItem("finsight-theme"); } catch { return null; } })();
+  if (saved) document.documentElement.dataset.theme = saved;
+  const isDark = () => document.documentElement.dataset.theme === "dark" ||
+    (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  const label = () => { btn.textContent = isDark() ? "Switch to light theme" : "Switch to dark theme"; };
+  label();
+  btn.onclick = () => {
+    const next = isDark() ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("finsight-theme", next); } catch {}
+    label();
+  };
+})();
+
+// ---- start-up info
+async function loadMeta() {
+  try {
+    const m = await (await fetch("/api/meta")).json();
+    state.meta = m;
+    if (!m.ready) {
+      $("status").textContent = m.error ? "The search index failed to load" : "Loading the document index";
+      if (!m.error) setTimeout(loadMeta, 4000);
+      else $("status").title = m.error;
+    } else {
+      $("status").textContent = `${m.documents} documents, ${m.chunks.toLocaleString("en-IN")} passages`;
+    }
+    const box = $("companies");
+    if (box.children.length === 1) {
+      m.companies.forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "chip"; b.textContent = c.code === "HINDUNILVR" ? "HUL" : c.name.replace("Tata Consultancy Services", "TCS");
+        b.title = c.name; b.setAttribute("aria-pressed", "false");
+        b.onclick = () => {
+          const on = !state.companies.has(c.code);
+          on ? state.companies.add(c.code) : state.companies.delete(c.code);
+          b.setAttribute("aria-pressed", String(on));
+        };
+        box.appendChild(b);
+      });
+      m.examples.forEach((q) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.textContent = q;
+        b.onclick = () => { $("q").value = q; ask(); };
+        $("examples").appendChild(b);
+      });
+      const e = m.evaluation;
+      $("metrics").innerHTML = [
+        ["Answer accuracy", pct(e.answer_accuracy)],
+        ["Accuracy on questions about tables", pct(e.table_accuracy)],
+        ["Right page found in the top 6 passages", pct(e.retrieval_hit_at_6)],
+        ["Unanswerable questions refused", pct(e.correct_refusals)],
+        ["Answers with the wrong currency", String(e.currency_errors)],
+        ["Test questions", String(e.questions)],
+      ].map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("");
+    }
+  } catch {
+    $("status").textContent = "Can't reach the server";
+    setTimeout(loadMeta, 5000);
+  }
+}
+
+// ---- rendering
+function renderAnswer(text, nSources) {
+  const paras = esc(text).trim().split(/\n{2,}/);
+  return paras.map((p) => {
+    let html = p.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\[(\d+(?:\s*,\s*\d+)*)\]/g, (m, group) => group.split(",").map((n) => {
+        n = n.trim();
+        return +n >= 1 && +n <= nSources
+          ? `<button type="button" class="cite" data-n="${n}" aria-label="Show source ${n}">${n}</button>`
+          : "";
+      }).join(""));
+    const lines = html.split("\n");
+    if (lines.every((l) => /^\s*[-*•]\s/.test(l))) {
+      return "<ul>" + lines.map((l) => `<li>${l.replace(/^\s*[-*•]\s/, "")}</li>`).join("") + "</ul>";
+    }
+    return `<p>${lines.join("<br>")}</p>`;
+  }).join("");
+}
+
+function renderPassage(text) {
+  // first line is the context header: [Title | Section | amounts in ₹ crore]
+  const lines = text.split("\n");
+  let ctx = "";
+  if (/^\[.*\]$/.test(lines[0])) {
+    const parts = lines.shift().slice(1, -1).split(" | ").slice(1);      // drop the document title (shown above)
+    if (parts.length && lines[0] && lines[0].trim() === parts[0].trim()) parts.shift();   // section repeated as first line
+    ctx = parts.join(", ");
+  }
+  const out = [];
+  let buf = [], table = [];
+  const flushText = () => { if (buf.length) { out.push(`<div class="body">${esc(buf.join("\n"))}</div>`); buf = []; } };
+  const flushTable = () => {
+    if (!table.length) return;
+    const rows = table.filter((r) => !/^\|\s*-{3}/.test(r)).map((r) => r.trim().replace(/^\||\|$/g, "").split("|").map((c) => esc(c.trim())));
+    const [head, ...body] = rows;
+    out.push(`<div class="tablewrap"><table><thead><tr>${head.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>` +
+      body.map((r) => `<tr>${r.map((c) => `<td${/^[\s\d,.\-–()%₹]+$/.test(c) && /\d/.test(c) ? ' class="n"' : ""}>${c}</td>`).join("")}</tr>`).join("") + "</tbody></table></div>");
+    table = [];
+  };
+  for (const l of lines) {
+    if (l.trim().startsWith("|")) { flushText(); table.push(l); }
+    else { flushTable(); buf.push(l); }
+  }
+  flushTable(); flushText();
+  return { ctx, html: out.join("") };
+}
+
+function renderSources(sources) {
+  $("sources").innerHTML = sources.map((s) => {
+    const title = s.label.split(", p")[0];
+    const pages = s.page_start === s.page_end ? `page ${s.page_start}` : `pages ${s.page_start}–${s.page_end}`;
+    const score = s.rerank_score ?? 0;
+    const { ctx, html } = renderPassage(s.text);
+    return `<li id="src-${s.number}" class="${s.cited ? "cited" : ""}">
+      <button type="button" class="src-row" aria-expanded="false" aria-controls="p-${s.number}">
+        <span class="num">${s.number}</span>
+        <span><span class="src-title">${esc(title)}</span>
+          <span class="src-sub" style="display:block">${pages}${s.section ? `, ${esc(s.section.slice(0, 70))}` : ""}${s.content_type === "table" ? ", table" : ""}</span></span>
+        <span class="score" title="Relevance from the re-ranker"><i><b style="width:${Math.round(score * 100)}%"></b></i><small>${score.toFixed(2)}</small></span>
+      </button>
+      <div class="passage" id="p-${s.number}" hidden>
+        ${ctx ? `<p class="ctx">${esc(ctx)}</p>` : ""}${html}
+        <div class="links">${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">Open ${pages} of the PDF</a>` : ""}</div>
+      </div></li>`;
+  }).join("");
+  $("sources").querySelectorAll(".src-row").forEach((row) => row.onclick = () => toggle(row.parentElement));
+}
+
+function toggle(li, open) {
+  const row = li.querySelector(".src-row"), p = li.querySelector(".passage");
+  const next = open ?? p.hidden;
+  p.hidden = !next;
+  row.setAttribute("aria-expanded", String(next));
+}
+
+function showSource(n) {
+  const li = $(`src-${n}`);
+  if (!li) return;
+  toggle(li, true);
+  li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  li.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+}
+
+function render(r) {
+  $("asked").textContent = r.question;
+  $("notice").innerHTML = r.notice ? `<div class="notice">${esc(r.notice)}</div>` : "";
+  const a = $("answer");
+  a.className = "answer";
+  if (r.answer == null) {
+    a.innerHTML = `<p class="muted">Read the passages on the right; the closest matches are listed first.</p>`;
+  } else if (r.refused) {
+    a.classList.add("refused");
+    const reason = r.gated
+      ? "No passage in these documents matches the question closely enough, so the model was not asked."
+      : (r.answer.split(/NOT_FOUND:?/i)[1] || "").trim();
+    const before = r.answer.split(/NOT_FOUND/i)[0].trim();
+    a.innerHTML = (before ? renderAnswer(before, r.sources.length) : "") +
+      `<p>Not in these documents.</p>` + (reason ? `<p class="muted">${esc(reason)}</p>` : "");
+  } else {
+    a.innerHTML = renderAnswer(r.answer, r.sources.length);
+  }
+  if (r.error) a.innerHTML += `<p class="muted">${esc(r.error)}</p>`;
+  a.querySelectorAll(".cite").forEach((b) => b.onclick = () => showSource(b.dataset.n));
+
+  const f = [];
+  const lat = r.latency_ms || {};
+  if (lat.retrieval != null) f.push(`Search <strong>${(lat.retrieval / 1000).toFixed(1)} s</strong>`);
+  if (lat.generation != null) f.push(`Answer <strong>${(lat.generation / 1000).toFixed(1)} s</strong>`);
+  if (r.tokens && r.tokens.input) f.push(`<strong>${(r.tokens.input + r.tokens.output).toLocaleString("en-IN")}</strong> tokens`);
+  const af = r.filters?.analysis || {};
+  if (af.companies?.length) f.push(`Companies <strong>${af.companies.join(", ")}</strong>`);
+  if (af.years?.length) f.push(`Year boost <strong>${af.years.join(", ")}</strong>`);
+  $("facts").innerHTML = f.map((x) => `<span>${x}</span>`).join("");
+
+  $("srcnote").textContent = r.candidates_searched ? `best ${r.sources.length} of ${r.candidates_searched} re-ranked` : "";
+  renderSources(r.sources);
+  $("result").hidden = false;
+}
+
+// ---- asking
+async function ask() {
+  const question = $("q").value.trim();
+  if (question.length < 3 || state.busy) return;
+  state.busy = true;
+  $("go").disabled = true; $("go").textContent = "Asking";
+  $("result").hidden = false;
+  $("asked").textContent = question;
+  $("notice").innerHTML = ""; $("facts").innerHTML = ""; $("sources").innerHTML = ""; $("srcnote").textContent = "";
+  $("answer").className = "answer";
+  $("answer").innerHTML = `<p class="loading">Searching the reports and writing a cited answer</p>`;
+  try {
+    const res = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, companies: [...state.companies] }) });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const msg = typeof body.detail === "string" ? body.detail : "Questions need 3 to 400 characters.";
+      $("answer").innerHTML = `<div class="notice">${esc(msg)}</div>`;
+    } else {
+      render(body);
+    }
+  } catch {
+    $("answer").innerHTML = `<div class="notice">Can't reach the server. Check your connection and ask again.</div>`;
+  } finally {
+    state.busy = false;
+    $("go").disabled = false; $("go").textContent = "Ask";
+  }
+}
+
+$("ask").addEventListener("submit", (e) => { e.preventDefault(); ask(); });
+$("q").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } });
+loadMeta();
+</script>
+</body>
+</html>

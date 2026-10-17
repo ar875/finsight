@@ -1,0 +1,9 @@
+{
+  "current config": {
+    "hit@k": 0.8,
+    "recall@k": 0.789,
+    "mrr": 0.483,
+    "ndcg@k": 0.599,
+    "candidate_recall": 0.889
+  }
+}

@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.streamlit/secrets.toml
+# large or rebuildable data (the built index in data/index/ IS committed: the Streamlit app needs it)
+data/raw/
+data/parsed/

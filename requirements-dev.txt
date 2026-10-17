@@ -1,0 +1,8 @@
+-r requirements-full.txt
+pytest>=8.0
+httpx>=0.27
+pandas>=2.0
+tabulate>=0.9
+onnx>=1.15               # only to build the tiny test model in tests/test_reranker_onnx.py
+rank-bm25==0.2.2        # only to check that finsight's BM25 gives identical scores
+qdrant-client>=1.9      # optional vector database backend (index.backend: qdrant)
